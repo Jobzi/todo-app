@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+}
+
+.input{
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 7px;
+}
+
+.button-style{
+    background: black;
+    color: white;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 6px;
+}
+
+.title{
+    color: #2b8eff;
+    text-align: center;
+}
