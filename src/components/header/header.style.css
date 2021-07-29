@@ -1,0 +1,56 @@
+:root{
+    --light-foreground: rgba(255, 255, 255);
+    --geist-foreground: #000;
+}
+
+.header{
+    top: 0;
+    position: sticky;
+    background:rgba(255, 255, 255,.4);
+    backdrop-filter: Blur(5px);
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    padding: 1rem;
+}
+
+.header-mobile{
+    top: 0;
+    position: sticky;
+    background:rgba(255, 255, 255,.4);
+    backdrop-filter: Blur(5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem;
+}
+
+.nav{
+    display: flex;
+    justify-content: center;
+}
+
+.black-button{
+    margin: 2px;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    background: black;
+    color: white;
+}
+
+.black-button:hover{
+    background: white;
+    color: black;
+}
+
+a{
+    cursor: pointer;
+    padding-left:1rem;
+    padding-right:1rem;
+    color:var(--geist-foreground);
+    font-size: 70%;
+    text-decoration: none;
+
+}

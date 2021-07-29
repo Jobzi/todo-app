@@ -4,12 +4,21 @@ import { Task } from '../../../types'
 
 interface Props{
     tasks:Array<Task>
+    handleRemoveTask: (id: number) => void
 }
 
-export default function ListTask ({ tasks }:Props) {
+export default function ListTask ({ tasks, handleRemoveTask }:Props) {
   const renderList = () => {
     return tasks.map((task) => {
-      return <li key={task.id}>{task.task}</li>
+      if (!task.completed) {
+        return (
+        <div className='checkbox-container li-style' key={task.id}>
+          <input type="checkbox" value={task.id} onClick={() => handleRemoveTask(task.id)}/>
+          <li>{task.task}</li>
+        </div>
+        )
+      }
+      return null
     }).reverse()
   }
 

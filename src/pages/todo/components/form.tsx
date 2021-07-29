@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useState } from 'react'
 import { Task } from '../../../types'
-import '../todo.styles.css'
+import '../todo.style.css'
 
 interface Props{
     tasks:Array<Task>
@@ -13,7 +13,7 @@ export default function Form ({ tasks, setTasks }:Props) {
 
   const handleSubmit = (evet : React.FormEvent<HTMLFormElement>) => {
     evet.preventDefault()
-    setTasks([...tasks, { id: tasks.length + 1, task: newtask, date: '27-01-1996' }])
+    setTasks([...tasks, { id: tasks.length + 1, task: newtask, date: '27-01-1996', completed: false }])
     setNewtask('')
   }
 
