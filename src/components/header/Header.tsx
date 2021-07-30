@@ -5,7 +5,7 @@ import { Link } from 'wouter'
 import './header.style.css'
 
 export default function Header () {
-  const [toogleNav, setToogleNav] = useState(true)
+  const [toogleNav, setToogleNav] = useState<Boolean>(false)
   const isMobile = useMediaQuery({
     query: '(max-width: 768px)'
   })
@@ -33,11 +33,14 @@ export default function Header () {
   const mobileOptions = () => {
     return (
     <div className='nav-style'>
-      <Link to='/dashboard'>
-        <a>Dashboard</a>
+      <Link to='/dashboard' onClick={toggleClick}>
+        Dashboard
       </Link>
-      <Link to='/Login'>
-        <a>Login</a>
+      <Link to='/login' onClick={toggleClick}>
+        Login
+      </Link>
+      <Link to='/register' onClick={toggleClick}>
+        Register
       </Link>
     </div>
     )

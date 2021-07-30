@@ -4,7 +4,6 @@ import Header from './components/header/Header'
 import IndexUI from './pages/index'
 import TodoUI from './pages/todo/todoUI'
 import {
-  Router,
   Switch,
   Route
 } from 'wouter'
@@ -14,8 +13,8 @@ import './App.css'
 
 function App () {
   return (
-    <Router>
-        <Header/>
+    <>
+      <Header/>
       <Switch>
         <Route path="/dashboard" component={() => <TodoUI/>}/>
         <Route path="/login" component={() => <LoginUI/>}/>
@@ -24,7 +23,7 @@ function App () {
           <IndexUI/>
         </Route>
       </Switch>
-    </Router>
+    </>
   )
 }
 

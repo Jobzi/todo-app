@@ -70,7 +70,6 @@ a{
         right: 0;
         width: 100%;
         height: 100vh;
-        padding: 1.5rem;
         grid-template-rows: repeat(auto-fill, minmax(3.5rem, 1fr));
         font-size: 1.5rem;
         justify-items: center;

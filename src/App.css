@@ -76,6 +76,9 @@ ul{
       grid-template-columns: 1fr;
       margin-bottom: 2rem;
   }
+  .form-container{
+    padding: 1rem;
+  }
 }
 
 
