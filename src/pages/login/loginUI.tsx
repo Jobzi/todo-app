@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Button from '../../components/button/button'
 import Input from '../../components/Input'
-import './login.style.css'
+import GeneralLayout from '../../layout/general'
 export default function LoginUI () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -17,7 +17,7 @@ export default function LoginUI () {
     }, 5000)
   }
   return (
-    <div className='container'>
+    <GeneralLayout>
       <h3>Iniciar sesión</h3>
       <hr
         style={{
@@ -28,7 +28,7 @@ export default function LoginUI () {
           width: '1em'
         }}
     />
-      <form onSubmit={handleSubmit} className='form-style'>
+      <form onSubmit={handleSubmit} className='form-login'>
         <Input
           type='text'
           value = {email}
@@ -45,6 +45,6 @@ export default function LoginUI () {
         />
         <Button color='black' loadingColor='white' loading={submited} design='normal' >Login</Button>
       </form>
-    </div>
+    </GeneralLayout>
   )
 }

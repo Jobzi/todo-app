@@ -10,11 +10,12 @@ import {
 } from 'wouter'
 import LoginUI from './pages/login/loginUI'
 import RegisterUI from './pages/register/registerUI'
+import './App.css'
 
 function App () {
   return (
     <Router>
-      <Header/>
+        <Header/>
       <Switch>
         <Route path="/dashboard" component={() => <TodoUI/>}/>
         <Route path="/login" component={() => <LoginUI/>}/>

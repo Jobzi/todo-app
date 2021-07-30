@@ -1,3 +1,94 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+  height: 90vh;
+}
+
+.button-style{
+  background: black;
+  color: white;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 6px;
+}
+
+.title{ 
+  margin-bottom: 3rem;
+}
+
+.title > h1, h4{
+  color: #2b8eff;
+  text-align: center;
+  margin: 0;
+}
+
+.checkbox-container{
+  display: flex;
+  align-items:baseline;
+}
+
+.li-style{
+  list-style-type: none; 
+  border: 1px solid grey;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+ul{
+  list-style-type: none;
+  padding: 0;
+}
+
+
+
+/* Form css */
+.form-login{
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  /* font-size: xx-large; */
+}
+
+.form-container{
+  max-width: 568px;
+}
+
+.form-register{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items:center;
+  
+}
+
+@media screen and (max-width: 768px){
+  .form-register{
+      grid-template-columns: 1fr;
+      margin-bottom: 2rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* App csss */
 .App {
   text-align: center;
 }

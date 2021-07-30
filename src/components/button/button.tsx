@@ -38,7 +38,7 @@ const ButtonStyled = styled.button<StyleProps>`
 const DESIGN = {
   normal: '0.75rem 2rem',
   compact: '0.5rem 1.5rem',
-  full: '100%'
+  full: '95%'
 }
 
 export default Button

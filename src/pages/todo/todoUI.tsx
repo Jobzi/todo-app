@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { Task } from '../../types'
 import Form from './components/form'
 import ListTask from './components/listTask'
-import './todo.style.css'
 
 const INITIAL_VALUES:Array<Task> = [
   {
