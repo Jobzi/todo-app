@@ -1,10 +1,11 @@
 /* eslint-disable no-use-before-define */
-import React from 'react'
+import React, { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'wouter'
 import './header.style.css'
 
 export default function Header () {
+  const [toogleNav, setToogleNav] = useState(true)
   const isMobile = useMediaQuery({
     query: '(max-width: 768px)'
   })
@@ -29,12 +30,32 @@ export default function Header () {
             </nav>
         </header>
   }
-
+  const mobileOptions = () => {
+    return (
+    <div className='nav-style'>
+      <Link to='/dashboard'>
+        <a>Dashboard</a>
+      </Link>
+      <Link to='/Login'>
+        <a>Login</a>
+      </Link>
+    </div>
+    )
+  }
+  const toggleClick = () => {
+    console.log(toogleNav)
+    setToogleNav((prev) => !prev)
+  }
   const mobileHeader = () => {
-    return <header className='header-mobile'>
-            <Link to="/"><span style={{ cursor: 'pointer' }}>🎈</span></Link>
-            <span>🥃</span>
-        </header>
+    return (
+    <>
+      <header className='header-mobile'>
+        <Link to="/"><span style={{ cursor: 'pointer' }}>🎈</span></Link>
+        <span onClick={toggleClick}>🥃</span>
+      </header>
+      {toogleNav && mobileOptions()}
+    </>
+    )
   }
   return (
   <>

@@ -30,7 +30,7 @@ export default function TodoUI () {
     }))
   }
   return (
-     <section className='container'>
+     <section className='containerTask'>
       <div className='title'>
           <h1 >¡Bienvenido!</h1>
           <h4 >Control de Tareas</h4>
