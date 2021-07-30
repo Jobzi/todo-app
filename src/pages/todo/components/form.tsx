@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useState } from 'react'
+import Button from '../../../components/button/button'
+import Input from '../../../components/Input'
 import { Task } from '../../../types'
-import '../todo.style.css'
 
 interface Props{
     tasks:Array<Task>
@@ -23,8 +24,8 @@ export default function Form ({ tasks, setTasks }:Props) {
   }
   return (
         <form onSubmit={handleSubmit}>
-            <input className="input" type='text' onChange={handleChange} value={newtask} placeholder='Tareas'/>
-            <button className='button-style'>Agregar</button>
+            <Input type='text' onChange={handleChange} value={newtask} placeholder='Tareas'/>
+            <Button color='black' design='normal'>Agregar</Button>
         </form>
   )
 }

@@ -4,7 +4,7 @@ import React from 'react'
 export default function IndexUI () {
   return (
     <div className='container'>
-      <h1>Hola, Te Esperando</h1>
+      <h1>Hola, Te Estaba Esperando</h1>
     </div>
   )
 }

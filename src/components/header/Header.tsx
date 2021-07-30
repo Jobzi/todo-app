@@ -12,7 +12,7 @@ export default function Header () {
   const desktopHeader = () => {
     return <header className='header'>
             <Link to='/'>
-              <span>🎈</span>
+              <span style={{ cursor: 'pointer' }}>🎈</span>
             </Link>
             <nav className=''>
                 <Link to='/dashboard'>
@@ -32,7 +32,7 @@ export default function Header () {
 
   const mobileHeader = () => {
     return <header className='header-mobile'>
-            <Link to="/"><span>🎈</span></Link>
+            <Link to="/"><span style={{ cursor: 'pointer' }}>🎈</span></Link>
             <span>🥃</span>
         </header>
   }

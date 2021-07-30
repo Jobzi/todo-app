@@ -32,12 +32,12 @@ export default function TodoUI () {
   }
   return (
      <section className='container'>
-     <div className='title'>
-        <h1 >¡Bienvenido!</h1>
-        <h4 >Control de Tareas</h4>
-      </div>
-      <Form tasks={tasks} setTasks={setTasks}/>
-      <ListTask tasks={tasks} handleRemoveTask={handleRemoveTask}/>
+      <div className='title'>
+          <h1 >¡Bienvenido!</h1>
+          <h4 >Control de Tareas</h4>
+        </div>
+        <Form tasks={tasks} setTasks={setTasks}/>
+        <ListTask tasks={tasks} handleRemoveTask={handleRemoveTask}/>
      </section>
   )
 }
