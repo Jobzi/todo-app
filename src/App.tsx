@@ -3,10 +3,7 @@ import React from 'react'
 import Header from './components/header/Header'
 import IndexUI from './pages/index'
 import TodoUI from './pages/todo/todoUI'
-import {
-  Switch,
-  Route
-} from 'wouter'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LoginUI from './pages/login/loginUI'
 import RegisterUI from './pages/register/registerUI'
 import './App.css'
@@ -14,6 +11,7 @@ import './App.css'
 function App () {
   return (
     <>
+    <Router>
       <Header/>
       <Switch>
         <Route path="/dashboard" component={() => <TodoUI/>}/>
@@ -23,6 +21,7 @@ function App () {
           <IndexUI/>
         </Route>
       </Switch>
+    </Router>
     </>
   )
 }

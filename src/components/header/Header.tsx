@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React, { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import { Link } from 'wouter'
+import { Link } from 'react-router-dom'
 import './header.style.css'
 
 export default function Header () {
