@@ -2,19 +2,27 @@
 import React, { useState } from 'react'
 import Button from '../../components/button/button'
 import Input from '../../components/Input'
+import { useUser } from '../../hook/useUser'
 import GeneralLayout from '../../layout/general'
 export default function LoginUI () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [submited, useSubmited] = useState(false)
-  const handleSubmit = (evet:React.FormEvent<HTMLFormElement>) => {
+  const { HandleLogin } = useUser()
+
+  const handleSubmit = async (evet:React.FormEvent<HTMLFormElement>) => {
     evet.preventDefault()
     console.log('Email:', email)
     console.log('password:', password)
     useSubmited(true)
-    setTimeout(() => {
+    try {
+      await HandleLogin({ email, password })
+      setEmail('')
+      setPassword('')
       useSubmited(false)
-    }, 5000)
+    } catch (error) {
+      console.error('ERROR WITH AUTH')
+    }
   }
   return (
     <GeneralLayout>

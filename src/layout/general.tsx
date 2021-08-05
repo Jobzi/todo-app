@@ -1,12 +1,10 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
 
-interface Props{
-    children?:React.ReactNode
-}
-
-export default function GeneralLayout ({ children }:Props) {
+const GeneralLayout:React.FC = ({ children }) => {
   return <div className='container'>
     {children}
   </div>
 }
+
+export default GeneralLayout

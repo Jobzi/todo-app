@@ -1,21 +1,19 @@
 /* eslint-disable no-use-before-define */
-
 import React from 'react'
 import styled from 'styled-components'
 import Loader from '../Loader'
 
 interface Props{
   color?:string
-  loading?:boolean
+  loading:boolean
   loadingColor?:string
   design?: 'normal'|'compact'|'full'
   onClick?: () => void
-  children?:React.ReactNode
 }
 
 type StyleProps = Omit<Props, 'children'|'onClick'>
 
-function Button ({ color = 'blue', loading = false, design = 'normal', loadingColor, children, ...props }:Props) {
+const Button:React.FC<Props> = ({ color = 'blue', loading, design = 'normal', loadingColor, children, ...props }) => {
   return (
     <ButtonStyled color={color} loading={loading} design={design} {...props}>
       {loading ? <Loader size={25} loadingColor={loadingColor}/> : children }

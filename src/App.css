@@ -26,7 +26,7 @@
 }
 
 .title > h1, h4{
-  color: #2b8eff;
+  color: #529ef5;
   text-align: center;
   margin: 0;
 }
@@ -81,6 +81,11 @@ ul{
   }
 }
 
+.style-text{
+  background: linear-gradient(to right,#30CFD0 0%,#330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+}
 
 
 

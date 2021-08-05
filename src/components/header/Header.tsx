@@ -5,7 +5,7 @@ import { Link } from 'wouter'
 import './header.style.css'
 
 export default function Header () {
-  const [toogleNav, setToogleNav] = useState<Boolean>(false)
+  const [toogleNav, setToogleNav] = useState(false)
   const isMobile = useMediaQuery({
     query: '(max-width: 768px)'
   })

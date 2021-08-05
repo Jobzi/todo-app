@@ -25,7 +25,7 @@ export default function Form ({ tasks, setTasks }:Props) {
   return (
         <form onSubmit={handleSubmit}>
             <Input type='text' onChange={handleChange} value={newtask} placeholder='Tareas'/>
-            <Button color='black' design='normal'>Agregar</Button>
+            <Button loading={false} color='black' design='normal'>Agregar</Button>
         </form>
   )
 }
