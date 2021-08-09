@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import Button from '../../components/button/button'
 import Hr from '../../components/Hr'
 import Input from '../../components/Input'
+import InputField from '../../components/InputField'
 import { useUser } from '../../hook/useUser'
 import GeneralLayout from '../../layout/general'
 import './register.style.css'
@@ -51,19 +52,27 @@ export default function RegisterUI () {
       <Hr/>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='form-register'>
-          <Input type="text" autoComplete='off' placeholder='Nombre Apellido' {...register('fullName', { required: true })}></Input>
-          {errors.fullName && <p className="error-message">El campo usuario es requerido</p>}
-          <Input type="email" placeholder="Correo" {...register('email', { required: true, pattern: EMAIL_REGEX })} />
-          {errors.email && <p className="error-message">El campo email es requeridp</p>}
-          <Input type="password" autoComplete='off' placeholder='Contraseña' {...register('password', PASSWORD_OPTIONS) }></Input>
-          {errors.password && <p className="error-message">{errors.password.message}</p>}
-          <Input type="password" placeholder='Repetir Contraseña' {...register('passwordRepeated', {
-            required: true,
-            validate: {
-              equal: v => v === watchPassword
-            }
-          })}></Input>
-          {errors.passwordRepeated && <p className="error-message">No coinciden las contraseñas</p>}
+          <InputField>
+            <Input type="text" autoComplete='off' placeholder='Nombre Apellido' {...register('fullName', { required: true })}></Input>
+            {errors.fullName && <span className="error-message">El campo usuario es requerido</span>}
+          </InputField>
+          <InputField>
+            <Input type="email" placeholder="Correo" {...register('email', { required: true, pattern: EMAIL_REGEX })} />
+            {errors.email && <p className="error-message">El campo email es requerido</p>}
+          </InputField>
+          <InputField>
+            <Input type="password" autoComplete='off' placeholder='Contraseña' {...register('password', PASSWORD_OPTIONS) }></Input>
+            {errors.password && <p className="error-message">{errors.password.message}</p>}
+          </InputField>
+          <InputField>
+            <Input type="password" placeholder='Repetir Contraseña' {...register('passwordRepeated', {
+              required: true,
+              validate: {
+                equal: v => v === watchPassword
+              }
+            })}></Input>
+            {errors.passwordRepeated && <p className="error-message">No coinciden las contraseñas</p>}
+          </InputField>
         </div>
         <Button color='black' loadingColor='white' loading={loading} design='full' >Register</Button>
       </form>

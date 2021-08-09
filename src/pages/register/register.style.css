@@ -1,6 +1,8 @@
 .error-message {
   color: #bf1650;
   font-size: small;
+  margin-top:-5px;
+  margin-bottom:10px;
 }
 
 .error-message::before {
