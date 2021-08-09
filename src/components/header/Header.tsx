@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'wouter'
+import Pl from '../Plink'
 import './header.style.css'
 
 export default function Header () {
@@ -34,13 +35,13 @@ export default function Header () {
     return (
     <div className='nav-style'>
       <Link to='/dashboard' onClick={toggleClick}>
-        Dashboard
+        <Pl>Dashboard</Pl>
       </Link>
       <Link to='/login' onClick={toggleClick}>
-        Login
+        <Pl>Login</Pl>
       </Link>
       <Link to='/register' onClick={toggleClick}>
-        Register
+        <Pl>Register</Pl>
       </Link>
     </div>
     )

@@ -1,19 +1,19 @@
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction:column;
+  flex-direction: column;
   height: 90vh;
 }
 
-.containerTask{
+.containerTask {
   width: 100%;
   height: 100%;
   display: grid;
   place-items: center;
 }
 
-.button-style{
+.button-style {
   background: black;
   color: white;
   border-radius: 5px;
@@ -21,87 +21,69 @@
   padding: 6px;
 }
 
-.title{ 
+.title {
   margin-bottom: 3rem;
 }
 
-.title > h1, h4{
+.title > h1,
+h4 {
   color: #529ef5;
   text-align: center;
   margin: 0;
 }
 
-.checkbox-container{
+.checkbox-container {
   display: flex;
-  align-items:baseline;
+  align-items: baseline;
 }
 
-.li-style{
-  list-style-type: none; 
+.li-style {
+  list-style-type: none;
   border: 1px solid grey;
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
 }
 
-ul{
+ul {
   list-style-type: none;
   padding: 0;
 }
 
-
-
 /* Form css */
-.form-login{
+.form-login {
   display: flex;
   justify-self: center;
   flex-direction: column;
   /* font-size: xx-large; */
 }
 
-.form-container{
+.form-container {
   max-width: 568px;
 }
 
-.form-register{
+.form-register {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
-  align-items:center;
-  
+  align-items: center;
 }
 
-@media screen and (max-width: 768px){
-  .form-register{
-      grid-template-columns: 1fr;
-      margin-bottom: 2rem;
+@media screen and (max-width: 768px) {
+  .form-register {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
   }
-  .form-container{
+  .form-container {
     padding: 1rem;
   }
 }
 
-.style-text{
-  background: linear-gradient(to right,#30CFD0 0%,#330867 100%);
+.style-text {
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* App csss */
 .App {

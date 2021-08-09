@@ -5,17 +5,25 @@ import Loader from '../Loader'
 
 interface Props{
   color?:string
-  loading:boolean
+  loading?:boolean
   loadingColor?:string
   design?: 'normal'|'compact'|'full'
   onClick?: () => void
+  children?:React.ReactNode
+}
+
+const defaultProps:Props = {
+  color: 'blue',
+  loading: false,
+  design: 'normal'
 }
 
 type StyleProps = Omit<Props, 'children'|'onClick'>
 
-const Button:React.FC<Props> = ({ color = 'blue', loading, design = 'normal', loadingColor, children, ...props }) => {
+const Button:React.FC<Props> = ({ color, loading, design, loadingColor, children, ...props }: typeof defaultProps) => {
   return (
-    <ButtonStyled color={color} loading={loading} design={design} {...props}>
+    <ButtonStyled color={color} design={design} {...props}>
+      {/* loading={loading} => Problemas con style components props */}
       {loading ? <Loader size={25} loadingColor={loadingColor}/> : children }
     </ButtonStyled>
   )
