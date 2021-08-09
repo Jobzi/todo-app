@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Button from '../../components/button/button'
-import Hr from '../../components/Hr'
 import Input from '../../components/Input'
 import InputField from '../../components/InputField'
 import { useUser } from '../../hook/useUser'
@@ -49,7 +48,13 @@ export default function RegisterUI () {
     <GeneralLayout>
       <div className='form-container'>
       <h5>Únete a nosotros y mantén tus tareas bajo control</h5>
-      <Hr/>
+      <hr style={{
+        color: 'black',
+        backgroundColor: 'black',
+        borderRadius: '20px',
+        height: 5,
+        width: '1em'
+      }}/>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='form-register'>
           <InputField>

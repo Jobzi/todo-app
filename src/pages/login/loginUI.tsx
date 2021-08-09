@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React, { useState } from 'react'
 import Button from '../../components/button/button'
-import Hr from '../../components/Hr'
 import Input from '../../components/Input'
 import { useUser } from '../../hook/useUser'
 import GeneralLayout from '../../layout/general'
@@ -28,7 +27,13 @@ export default function LoginUI () {
   return (
     <GeneralLayout>
       <h3>Iniciar sesión</h3>
-      <Hr/>
+      <hr style={{
+        color: 'black',
+        backgroundColor: 'black',
+        borderRadius: '20px',
+        height: 5,
+        width: '1em'
+      }}/>
       <form onSubmit={handleSubmit} className='form-login'>
         <Input
           type='text'
