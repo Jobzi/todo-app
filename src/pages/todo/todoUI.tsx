@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useState } from 'react'
+import GeneralLayout from '../../layout/general'
 import { Task } from '../../types'
 import Form from './components/form'
 import ListTask from './components/listTask'
@@ -30,13 +31,13 @@ export default function TodoUI () {
     }))
   }
   return (
-     <section className='containerTask'>
+     <GeneralLayout>
       <div className='title'>
           <h1 >¡Bienvenido!</h1>
           <h4 >Control de Tareas</h4>
         </div>
         <Form tasks={tasks} setTasks={setTasks}/>
         <ListTask tasks={tasks} handleRemoveTask={handleRemoveTask}/>
-     </section>
+     </GeneralLayout>
   )
 }

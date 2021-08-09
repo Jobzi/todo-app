@@ -1,8 +1,11 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-
-const GeneralLayout:React.FC = ({ children }) => {
-  return <div className='container'>
+interface Props{
+  className?: 'container-grid'|'container-flex'
+  children:React.ReactNode
+}
+const GeneralLayout:React.FC<Props> = ({ className = 'container-grid', children }) => {
+  return <div className={className}>
     {children}
   </div>
 }
