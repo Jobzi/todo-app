@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useEffect, useState } from 'react'
+import { Redirect } from 'wouter'
 import { useUser } from '../../hook/useUser'
 import GeneralLayout from '../../layout/general'
 import { getAllTask } from '../../services/task'
@@ -13,6 +14,7 @@ interface TodoAppState{
 export default function TodoUI () {
   const [tasks, setTasks] = useState<TodoAppState['information']>([])
   const { user, isLogged } = useUser()
+
   const handleRemoveTask = (id:string) => {
     const newTodo = [...tasks]
     const todoFind = newTodo.find((todo) => todo.id === id)
@@ -21,6 +23,7 @@ export default function TodoUI () {
     }
     setTasks(newTodo)
   }
+
   const handleSubmit = (newTask:Task) => {
     setTasks([...tasks, newTask])
   }
@@ -32,14 +35,18 @@ export default function TodoUI () {
     }
   }, [])
 
-  return (
-     <GeneralLayout>
-      <div className='title'>
-        <h1 >¡Bienvenido!</h1>
-        <h4 >Control de Tareas</h4>
-      </div>
-      <Form handleSubmit={handleSubmit}/>
-      <ListTask tasks={tasks} handleRemoveTask={handleRemoveTask}/>
+  return <>
+  {isLogged
+    ? <GeneralLayout>
+        <div className='title'>
+          <h1 >¡Bienvenido!</h1>
+          <h4 >Control de Tareas</h4>
+        </div>
+        <Form handleSubmit={handleSubmit}/>
+        <ListTask tasks={tasks} handleRemoveTask={handleRemoveTask}/>
      </GeneralLayout>
-  )
+    : <Redirect to='/'/>
+}
+
+  </>
 }
