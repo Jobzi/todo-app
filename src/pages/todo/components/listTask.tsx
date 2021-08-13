@@ -4,7 +4,7 @@ import { Task } from '../../../types'
 
 interface Props{
     tasks:Array<Task>
-    handleRemoveTask: (id: number) => void
+    handleRemoveTask: (id: string) => void
 }
 
 export default function ListTask ({ tasks, handleRemoveTask }:Props) {

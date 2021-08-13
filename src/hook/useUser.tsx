@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useContext } from 'react'
+import { useContext, useState } from 'react'
 import useLocation from 'wouter/use-location'
 import UserContext from '../context/userContext'
 import { loginCredential, registerUser } from '../services/login'
@@ -17,6 +17,7 @@ interface RegisterProps{
 }
 export function useUser () {
   const { user, setUser, isLogged, setLogged }:any = useContext(UserContext)
+  const [error, setError] = useState(false)
   const [, navigate] = useLocation()
 
   const HandleLogin = async ({ email, password }:LoginProps) => {
@@ -27,8 +28,10 @@ export function useUser () {
       )
       setUser(user)
       setLogged(true)
+      setError(false)
       navigate('/dashboard')
     } catch (error) {
+      setError(true)
       console.log('Usuario no encontrado')
     }
   }
@@ -40,8 +43,10 @@ export function useUser () {
       )
       setUser(newUser)
       setLogged(true)
+      setError(false)
       navigate('/dashboard')
     } catch (error) {
+      setError(true)
       console.log('Usuario no Repetido')
     }
   }
@@ -50,8 +55,7 @@ export function useUser () {
     setUser(null)
     setLogged(false)
     navigate('/')
-    // noteservie.setToken('')
     window.localStorage.removeItem('loggedAppUser')
   }
-  return { user, HandleLogin, handleLogOut, isLogged, HandleRegister }
+  return { user, HandleLogin, handleLogOut, isLogged, HandleRegister, error }
 }

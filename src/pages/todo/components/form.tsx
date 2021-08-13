@@ -1,20 +1,20 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import Button from '../../../components/button/button'
 import Input from '../../../components/Input'
 import { Task } from '../../../types'
 
 interface Props{
-    tasks:Array<Task>
-    setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+    handleSubmit:(newTask: Task) => void
 }
 
-export default function Form ({ tasks, setTasks }:Props) {
+export default function Form ({ handleSubmit }:Props) {
   const [newtask, setNewtask] = useState('')
 
-  const handleSubmit = (evet : React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (evet : React.FormEvent<HTMLFormElement>) => {
     evet.preventDefault()
-    setTasks([...tasks, { id: tasks.length + 1, task: newtask, date: '27-01-1996', completed: false }])
+    handleSubmit({ id: uuidv4(), task: newtask, date: '27-01-1996', completed: false })
     setNewtask('')
   }
 
@@ -23,7 +23,7 @@ export default function Form ({ tasks, setTasks }:Props) {
     setNewtask(value)
   }
   return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleFormSubmit}>
             <Input type='text' onChange={handleChange} value={newtask} placeholder='Tareas'/>
             <Button loading={false} color='black' design='normal'>Agregar</Button>
         </form>

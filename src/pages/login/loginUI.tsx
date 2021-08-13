@@ -1,28 +1,27 @@
 /* eslint-disable no-use-before-define */
 import React, { useState } from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import Button from '../../components/button/button'
 import Input from '../../components/Input'
+import InputField from '../../components/InputField'
 import { useUser } from '../../hook/useUser'
 import GeneralLayout from '../../layout/general'
-export default function LoginUI () {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [submited, useSubmited] = useState(false)
-  const { HandleLogin } = useUser()
+interface Inputs {
+  email: string,
+  password: string,
+};
 
-  const handleSubmit = async (evet:React.FormEvent<HTMLFormElement>) => {
-    evet.preventDefault()
-    console.log('Email:', email)
-    console.log('password:', password)
-    useSubmited(true)
-    try {
-      await HandleLogin({ email, password })
-      setEmail('')
-      setPassword('')
-      useSubmited(false)
-    } catch (error) {
-      console.error('ERROR WITH AUTH')
-    }
+export default function LoginUI () {
+  const { register, handleSubmit, formState: { errors } } = useForm<Inputs>()
+  const { HandleLogin, error } = useUser()
+  const [loading, setLoading] = useState(false)
+
+  const onSubmit:SubmitHandler<Inputs> = data => {
+    const { email, password } = data
+    setLoading(true)
+    HandleLogin({ email, password })
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false))
   }
   return (
     <GeneralLayout>
@@ -34,23 +33,26 @@ export default function LoginUI () {
         height: 5,
         width: '1em'
       }}/>
-      <form onSubmit={handleSubmit} className='form-login'>
-        <Input
-          type='text'
-          value = {email}
-          name='Email'
-          placeholder='Email'
-          onChange={({ target }) => setEmail(target.value)}
-        />
-        <Input
-          type='password'
-          value = {password}
-          name='Password'
-          placeholder='Password'
-          onChange={({ target }) => setPassword(target.value)}
-        />
-        <Button color='black' loadingColor='white' loading={submited} design='normal' >Login</Button>
+      <form onSubmit={handleSubmit(onSubmit)} className='form-login'>
+        <InputField>
+          <Input
+            type='text'
+            placeholder='Email'
+            {...register('email', { required: true })}
+          />
+          {errors.email && <span className="error-message">El campo correo es requerido</span>}
+        </InputField>
+        <InputField>
+          <Input
+            type='password'
+            placeholder='Contraseña'
+            {...register('password', { required: true })}
+            />
+          {errors.password && <span className="error-message">El campo contraseña es requerido</span>}
+        </InputField>
+        <Button color='black' loadingColor='white' loading={loading} design='normal' >Login</Button>
       </form>
+        {error && <span className="error-message">CORREO o CONTRASEÑA INCORRECTOS</span>}
     </GeneralLayout>
   )
 }

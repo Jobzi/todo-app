@@ -20,3 +20,4 @@ Usage
   const nameField = useFiled({ type: 'text', name: 'name' })
   <Input placeholder='Nombre Apellido' {...nameField}></Input>
 */
+// onChange={({ target }) => setPassword(target.value)}

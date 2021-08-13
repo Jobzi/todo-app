@@ -1,43 +1,45 @@
 // eslint-disable-next-line no-use-before-define
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useUser } from '../../hook/useUser'
 import GeneralLayout from '../../layout/general'
+import { getAllTask } from '../../services/task'
 import { Task } from '../../types'
 import Form from './components/form'
 import ListTask from './components/listTask'
-
-const INITIAL_VALUES:Array<Task> = [
-  {
-    id: 1,
-    task: 'Hola Soy Una Tarea',
-    date: '28-07-2021',
-    completed: false
-  }, {
-    id: 2,
-    task: 'Hola Soy Segunda Tarea',
-    date: '28-07-2021',
-    completed: false
-  }
-]
+interface TodoAppState{
+  information:Array<Task>
+}
 
 export default function TodoUI () {
-  const [tasks, setTasks] = useState(INITIAL_VALUES)
-
-  const handleRemoveTask = (id:number) => {
-    setTasks(() => tasks.map(task => {
-      if (task.id === id) {
-        return { ...task, completed: !task.completed }
-      }
-      return task
-    }))
+  const [tasks, setTasks] = useState<TodoAppState['information']>([])
+  const { user, isLogged } = useUser()
+  const handleRemoveTask = (id:string) => {
+    const newTodo = [...tasks]
+    const todoFind = newTodo.find((todo) => todo.id === id)
+    if (typeof todoFind !== 'undefined') {
+      todoFind.completed = !todoFind.completed
+    }
+    setTasks(newTodo)
   }
+  const handleSubmit = (newTask:Task) => {
+    setTasks([...tasks, newTask])
+  }
+
+  useEffect(() => {
+    if (isLogged) {
+      getAllTask(user.token)
+        .then(setTasks)
+    }
+  }, [])
+
   return (
      <GeneralLayout>
       <div className='title'>
-          <h1 >¡Bienvenido!</h1>
-          <h4 >Control de Tareas</h4>
-        </div>
-        <Form tasks={tasks} setTasks={setTasks}/>
-        <ListTask tasks={tasks} handleRemoveTask={handleRemoveTask}/>
+        <h1 >¡Bienvenido!</h1>
+        <h4 >Control de Tareas</h4>
+      </div>
+      <Form handleSubmit={handleSubmit}/>
+      <ListTask tasks={tasks} handleRemoveTask={handleRemoveTask}/>
      </GeneralLayout>
   )
 }

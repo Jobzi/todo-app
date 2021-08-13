@@ -8,7 +8,7 @@ import { useUser } from '../../hook/useUser'
 import GeneralLayout from '../../layout/general'
 import './register.style.css'
 
-type Inputs = {
+interface Inputs {
   fullName: string,
   email: string,
   password: string,
@@ -36,7 +36,7 @@ export default function RegisterUI () {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>()
   const [loading, setloading] = useState<boolean>(false)
   const watchPassword = watch('password', '')
-  const { HandleRegister } = useUser()
+  const { HandleRegister, error } = useUser()
 
   const onSubmit: SubmitHandler<Inputs> = data => {
     const { fullName: user, password: passwordHash, email } = data
@@ -82,6 +82,7 @@ export default function RegisterUI () {
         <Button color='black' loadingColor='white' loading={loading} design='full' >Register</Button>
       </form>
       <p style={{ fontSize: '0.875rem' }}>Al registrarse, esta permitiendo el uso de sus datos proporcionados para que sean usados en la aplicación</p>
+      {error && <p className="error-message">¡UPS!. Registro invalido intente nuevamente</p>}
       </div>
     </GeneralLayout>
   )
