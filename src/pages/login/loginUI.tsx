@@ -12,7 +12,7 @@ interface Inputs {
 };
 
 export default function LoginUI () {
-  const { register, handleSubmit, formState: { errors } } = useForm<Inputs>()
+  const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({ defaultValues: { email: '', password: '' } })
   const { HandleLogin, error } = useUser()
   const [loading, setLoading] = useState(false)
 
