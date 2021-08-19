@@ -4,14 +4,13 @@ import { Redirect } from 'wouter'
 import useTask from '../../hook/useTask'
 import { useUser } from '../../hook/useUser'
 import GeneralLayout from '../../layout/general'
-import { Task } from '../../types'
 import Form from './components/form'
 import ListTask from './components/listTask'
 
 export default function TodoUI () {
-  const { tasks, setTasks } = useTask()
+  const { tasks, setTasks, handleSubmit } = useTask()
 
-  const { isLogged } = useUser()
+  const { isLogged, user } = useUser()
 
   const handleRemoveTask = (id:string) => {
     const newTodo = [...tasks]
@@ -22,16 +21,12 @@ export default function TodoUI () {
     setTasks(newTodo)
   }
 
-  const handleSubmit = (newTask:Task) => {
-    setTasks([...tasks, newTask])
-  }
-
   if (!isLogged) return <Redirect to='/'/>
 
   return <>
     <GeneralLayout>
         <div className='title'>
-          <h1 >¡Bienvenido!</h1>
+          <h1 >¡Bienvenido! {user.user}</h1>
           <h4 >Control de Tareas</h4>
         </div>
         <Form handleSubmit={handleSubmit}/>

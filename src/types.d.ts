@@ -11,3 +11,4 @@ export interface TaskFromApi {
   date: string
   important: boolean
 }
+export type TaskToSend = Omit<TaskFromApi, 'id' | 'date'>;

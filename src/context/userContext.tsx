@@ -1,8 +1,14 @@
 /* eslint-disable no-use-before-define */
 import React, { createContext, useEffect, useState } from 'react'
 
+interface User{
+  user:string
+  email:string
+  token:string
+}
+
 export interface UserContextProps{
-    user?:{}|null
+    user?:User|null
     setUser?:React.Dispatch<any>
     isLogged:boolean
     setLogged: React.Dispatch<React.SetStateAction<boolean>>

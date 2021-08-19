@@ -2,7 +2,6 @@
 import React from 'react'
 interface Props{
   className?: 'container-grid'|'container-flex'
-  children:React.ReactNode
 }
 const GeneralLayout:React.FC<Props> = ({ className = 'container-grid', children }) => {
   return <div className={className}>

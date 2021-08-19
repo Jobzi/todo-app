@@ -1,10 +1,14 @@
 import axios from 'axios'
 import { Task, TaskFromApi } from '../types'
 
-const { VITE_HOST: baseUrl } = import.meta.env
+const { VITE_HOST1: baseUrl } = import.meta.env
 
 export const getAllTask = (token: string) => {
   return fetchTaskAxios(token).then(mapFormApiToItems)
+}
+
+export const sendTask = ({ token, task }:any) => {
+  return sendTaskAxios({ token, task }).then(mapFormApiToItem)
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -17,9 +21,21 @@ const fetchTaskAxios = async (token: string): Promise<Array<TaskFromApi>> => {
   return response.data
 }
 
+const sendTaskAxios = async ({ token, task }:any):Promise<TaskFromApi> => {
+  const response = await axios.post(baseUrl + 'api/task', task, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+  return response.data
+}
+
 const mapFormApiToItems = (apiRes: Array<TaskFromApi>): Array<Task> => {
   return apiRes.map(taskFromApi => {
     const { id, content: task, date, important: completed } = taskFromApi
     return { id, task, date, completed }
   })
+}
+
+const mapFormApiToItem = (apiRes: TaskFromApi): Task => {
+  const { id, content: task, date, important: completed } = apiRes
+  return { id, task, date, completed }
 }

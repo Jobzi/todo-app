@@ -1,12 +1,11 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import Button from '../../../components/button/button'
 import Input from '../../../components/Input'
-import { Task } from '../../../types'
+import { TaskToSend } from '../../../types'
 
 interface Props{
-    handleSubmit:(newTask: Task) => void
+    handleSubmit:(newTask: TaskToSend) => void
 }
 
 export default function Form ({ handleSubmit }:Props) {
@@ -14,7 +13,7 @@ export default function Form ({ handleSubmit }:Props) {
 
   const handleFormSubmit = (evet : React.FormEvent<HTMLFormElement>) => {
     evet.preventDefault()
-    handleSubmit({ id: uuidv4(), task: newtask, date: '27-01-1996', completed: false })
+    handleSubmit({ content: newtask, important: false })
     setNewtask('')
   }
 
