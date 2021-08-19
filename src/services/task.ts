@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Task, TaskFromApi } from '../types'
 
-const { VITE_HOST1: baseUrl } = import.meta.env
+const { VITE_HOST: baseUrl } = import.meta.env
 
 export const getAllTask = (token: string) => {
   return fetchTaskAxios(token).then(mapFormApiToItems)
