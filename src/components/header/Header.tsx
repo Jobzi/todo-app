@@ -53,15 +53,20 @@ export default function Header () {
               <Pl>Register</Pl>
             </Link>
           </>
-        : <Pl onClick={handleLogOut}>Log Out</Pl>
+        : <Pl onClick={handleLogOut1}>Log Out</Pl>
         }
     </div>
     )
   }
+  const handleLogOut1 = () => {
+    handleLogOut()
+    toggleClick()
+  }
+
   const toggleClick = () => {
-    console.log(toogleNav)
     setToogleNav((prev) => !prev)
   }
+
   const mobileHeader = () => {
     return (
     <>
