@@ -3,11 +3,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 90vh;
+  min-height: 89vh;
 }
 .container-grid{
   display:grid;
   place-items: center;
+  min-height: 89vh;
 }
 
 .containerTask {
@@ -42,11 +43,15 @@ h4 {
 }
 
 .li-style {
-  list-style-type: none;
-  border: 1px solid grey;
+  border: 1px solid #edeef1;
   padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
+  padding-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: #f1f1f3;
+  font-size:large;
+  box-shadow: -1px 6px 8px -6px rgba(189, 216, 250, 0.3);
 }
 
 ul {

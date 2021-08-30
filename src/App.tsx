@@ -10,6 +10,7 @@ import './App.css'
 import { UserContextProvider } from './context/userContext'
 import Error404 from './pages/Error404'
 import { TaskContextProvider } from './context/taskContext'
+import Footer from './components/footer/footer'
 
 function App () {
   return (
@@ -25,6 +26,7 @@ function App () {
           <Route path ='/:rest*' component={Error404}/>
         </Switch>
       </TaskContextProvider>
+      <Footer content={'Welcome'}/>
     </UserContextProvider>
     </>
   )

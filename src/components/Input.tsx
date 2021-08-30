@@ -8,6 +8,10 @@ const Input = styled.input`
     margin: 0.5em;
     padding: 1em;
     font-size: large;
+    &:focus {
+       outline: none;
+       border: 1px inset #529ef5;
+    }
 `
 
 export default Input

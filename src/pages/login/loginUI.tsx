@@ -25,34 +25,36 @@ export default function LoginUI () {
   }
   return (
     <GeneralLayout>
-      <h3>Iniciar sesión</h3>
-      <hr style={{
-        color: 'black',
-        backgroundColor: 'black',
-        borderRadius: '20px',
-        height: 5,
-        width: '1em'
-      }}/>
-      <form onSubmit={handleSubmit(onSubmit)} className='form-login'>
-        <InputField>
-          <Input
-            type='text'
-            placeholder='Email'
-            {...register('email', { required: true })}
-          />
-          {errors.email && <span className="error-message">El campo correo es requerido</span>}
-        </InputField>
-        <InputField>
-          <Input
-            type='password'
-            placeholder='Contraseña'
-            {...register('password', { required: true })}
+      <div className='form-container'>
+        <h3>Iniciar sesión</h3>
+        <hr style={{
+          color: 'black',
+          backgroundColor: 'black',
+          borderRadius: '20px',
+          height: 5,
+          width: '1em'
+        }}/>
+        <form onSubmit={handleSubmit(onSubmit)} className='form-login'>
+          <InputField>
+            <Input
+              type='text'
+              placeholder='Email'
+              {...register('email', { required: true })}
             />
-          {errors.password && <span className="error-message">El campo contraseña es requerido</span>}
-        </InputField>
-        <Button color='black' loadingColor='white' loading={loading} design='normal' >Login</Button>
-      </form>
-        {error && <span className="error-message">CORREO o CONTRASEÑA INCORRECTOS</span>}
+            {errors.email && <span className="error-message">El campo correo es requerido</span>}
+          </InputField>
+          <InputField>
+            <Input
+              type='password'
+              placeholder='Contraseña'
+              {...register('password', { required: true })}
+              />
+            {errors.password && <span className="error-message">El campo contraseña es requerido</span>}
+          </InputField>
+          <Button color='black' loadingColor='white' loading={loading} design='normal' >Login</Button>
+        </form>
+          {error && <span className="error-message">CORREO o CONTRASEÑA INCORRECTOS</span>}
+    </div>
     </GeneralLayout>
   )
 }

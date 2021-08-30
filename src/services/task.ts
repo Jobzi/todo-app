@@ -11,6 +11,10 @@ export const sendTask = ({ token, task }:any) => {
   return sendTaskAxios({ token, task }).then(mapFormApiToItem)
 }
 
+export const updateTask = (task :Task) => {
+  return updateTaskAxios(mapToSendApi(task)).then(mapFormApiToItem)
+}
+
 // eslint-disable-next-line no-unused-vars
 const fetchCountry = (): Promise<Array<Task>> => {
   return fetch(baseUrl + 'api/task').then((res) => res.json())
@@ -28,6 +32,12 @@ const sendTaskAxios = async ({ token, task }:any):Promise<TaskFromApi> => {
   return response.data
 }
 
+const updateTaskAxios = async (task: TaskFromApi): Promise<TaskFromApi> => {
+  const response = await axios.put(baseUrl + 'api/task/' + task.id, task)
+  return response.data
+}
+
+// * mapea los valores segun el tipo de dato que llega de una peticion
 const mapFormApiToItems = (apiRes: Array<TaskFromApi>): Array<Task> => {
   return apiRes.map(taskFromApi => {
     const { id, content: task, date, important: completed } = taskFromApi
@@ -38,4 +48,9 @@ const mapFormApiToItems = (apiRes: Array<TaskFromApi>): Array<Task> => {
 const mapFormApiToItem = (apiRes: TaskFromApi): Task => {
   const { id, content: task, date, important: completed } = apiRes
   return { id, task, date, completed }
+}
+
+const mapToSendApi = (apiRes: Task): TaskFromApi => {
+  const { id, task: content, date, completed: important } = apiRes
+  return { content, date, important, id }
 }

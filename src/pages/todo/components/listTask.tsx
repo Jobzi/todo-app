@@ -14,7 +14,8 @@ export default function ListTask ({ tasks, handleRemoveTask }:Props) {
         return (
         <div className='checkbox-container li-style' key={task.id}>
           <input type="checkbox" value={task.id} onClick={() => handleRemoveTask(task.id)}/>
-          <li>{task.task}</li>
+          <div style={{ width: '10px' }}></div>
+          <label>{task.task}</label>
         </div>
         )
       }
